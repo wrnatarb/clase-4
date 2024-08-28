@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>Machine Learning</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+        <script src="https://unpkg.com/ml5@0.20.0-alpha.4/dist/ml5.min.js"></script>
+        <link rel="stylesheet" href="style.css"/>
+</head>
+    <body>
+        <header>
+            <p>
+                <a href="index.html">Hola</a>
+                <a href="page-1.html" class="activo">BodyPose</a>
+                <a href="page-2.html">BodySegmentation</a>
+                <a href="page-3.html">HandPose</a>
+                <a href="page-4.html">FaceMesh</a>
+               
+            </p>
+            <h1>BodyPose Skeleton</h1>
+        </header>
+        <main></main>
+        <!--active este botón-->
+        <aside>
+            
+          
+        </aside>
+        <!-- Lo que sigue depende de usted -->
+        <script>
+
+            
+let video;
+let bodyPose;
+let poses = [];
+let connections;
+
+function preload() {
+  // Load the bodyPose model
+  bodyPose = ml5.bodyPose();
+}
+
+function setup() {
+  createCanvas(640, 480);
+
+  // Create the video and hide it
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+
+  // Start detecting poses in the webcam video
+  bodyPose.detectStart(video, gotPoses);
+  //get the skeleton connection information
+  connections = bodyPose.getSkeleton();
+}
+
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < connections.length; j++) {
+      let pointAIndex = connections[j][0];
+      let pointBIndex = connections[j][1];
+      let pointA = pose.keypoints[pointAIndex];
+      let pointB = pose.keypoints[pointBIndex];
+      // Only draw a line if both points are confident enough
+      if (pointA.score > 0.1 && pointB.score > 0.1) {
+        stroke(255, 0, 0);
+        strokeWeight(2);
+        line(pointA.x, pointA.y, pointB.x, pointB.y);
+        tint("fuchsia") //queda con una lamina del color
+      }
+    }
+  }
+
+  // Draw all the tracked landmark points
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < pose.keypoints.length; j++) {
+      let keypoint = pose.keypoints[j];
+      // Only draw a circle if the keypoint's confidence is bigger than 0.1
+      if (keypoint.score > 0.1) {
+        fill(255);
+        noStroke();
+        circle(keypoint.x, keypoint.y, 7);
+      }
+    }
+  }
+}
+
+// Callback function for when bodyPose outputs data
+function gotPoses(results) {
+  // Save the output to the poses variable
+  poses = results;
+}
+
+         
+      
+        </script>
+    </body>
+</html>

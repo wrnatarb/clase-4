@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Machine Learning</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
+        <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.20.0-alpha.4/dist/ml5.min.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <p>
+                <a href="index.html">Hola</a>
+                <a href="page-1.html">BodyPose</a>
+                <a href="page-2.html">BodySegmentation</a>
+                <a href="page-3.html">HandPose</a>
+                <a href="page-4.html">FaceMesh</a>
+                <a href="page-5.html"class="activo">Apuntar</a>
+            </p>
+            <h1>Apuntar</h1>
+        </header>
+        <main></main>
+        <!--active este botón-->
+        <aside>
+            <button onclick="foto()">🖼️ DESCARGA</button>
+          
+        </aside>
+        <!-- Lo que sigue depende de usted -->
+        <script>
+            
+let faceMesh;
+let video;
+let faces = [];
+let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
+
+function preload() {
+  // Load the faceMesh model
+  faceMesh = ml5.faceMesh(options);
+}
+
+function setup() {
+  createCanvas(640, 480);
+  // Create the webcam video and hide it
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+  // Start detecting faces from the webcam video
+  faceMesh.detectStart(video, gotFaces);
+}
+
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  // Draw all the tracked face points
+  for (let i = 0; i < faces.length; i++) {
+    let face = faces[i];
+    for (let j = 0; j < face.keypoints.length; j++) {
+      let keypoint = face.keypoints[j];
+      fill(0, 255, 0);
+      noStroke();
+      circle(keypoint.x, keypoint.y, 5);
+    }
+  }
+}
+
+// Callback function for when faceMesh outputs data
+function gotFaces(results) {
+  // Save the output to the faces variable
+  faces = results;
+}
+
+        </script>
+    </body>
+</html>

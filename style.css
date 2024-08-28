@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+html,
+body {
+    /*repita un mismo background aquí y en todos los script*/
+    background:#2962FF;
+    /* cuide el contraste entre background y color */
+    color:#eee;
+    margin: 0;
+    padding: 0;
+    font-family: "DM Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+main{
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    display: block;
+    padding-top: 10rem;
+}
+
+header {
+    position: absolute;
+    top: 1rem;
+    left: 3rem;
+    z-index: 2;
+    width: 70vw;
+}
+
+@media (orientation: landscape) {
+    header {
+        width: 45vw;
+    }
+}
+
+a {
+    color: #bbb;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+a:hover{
+    color:#fff;
+}
+
+a.activo {
+    font-weight: #ddd;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+h1{
+    font-size:calc(1rem + 3vw);
+    text-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    font-weight: normal;
+    margin-left:-5px;
+}
+
+h2{
+    font-size:calc(1rem + 1.2vw);
+}
+
+p {
+    line-height: 1.5;
+}
+
+aside {
+    z-index: 2;
+    position: absolute;
+    left: 3rem;
+    bottom: 2rem;
+}
+
+aside button{
+    padding:.3rem .6rem;
+    font-weight: bold;
+}
