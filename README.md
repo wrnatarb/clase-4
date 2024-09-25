@@ -5,7 +5,12 @@ libro
 ![IMG_9397](https://github.com/user-attachments/assets/dd3bd65a-7e06-42a9-bb40-65f2b2de2e44)
 
 practica cbre
-![Uploading Mockup.png…]()
+![Mockupc (2)](https://github.com/user-attachments/assets/9fcc0df2-8c69-4934-b50a-90ddeac7113a)
+
+BANKI
+![Captura de pantalla 2024-09-25 123624](https://github.com/user-attachments/assets/86de866c-0427-4201-8f96-b17c9ecc991f)
+
+
 
 yunus
 ![IMG_7499m](https://github.com/user-attachments/assets/3ff1161f-4e8c-4273-91d3-cb157968f6e4)
@@ -17,7 +22,8 @@ diri
 ![nnkj](https://github.com/user-attachments/assets/2779a8bb-a1fc-484a-94ed-3cbc9f3b5661)
 
 fanzine
-![Uploading ssaak.png…]()
+![ssaak (1)](https://github.com/user-attachments/assets/9b4290d9-affe-41c2-a280-35225627c182)
+
 
 violeta wav
 ![imagejj](https://github.com/user-attachments/assets/61ef7590-1800-43fd-bb90-e3d68faa979b)
